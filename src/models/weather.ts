@@ -1,6 +1,7 @@
 import mongoose, { Document } from "mongoose";
 
 export interface WeatherDoc extends Document {
+  searchcity:string
   city: string;
   temperature: number;
   condition: string;
@@ -8,6 +9,7 @@ export interface WeatherDoc extends Document {
 }
 
 const WeatherSchema = new mongoose.Schema<WeatherDoc>({
+  searchcity:{type:String,required:true},
   city: { type: String, required: true },
   temperature: { type: Number, required: true },
   condition: { type: String, required: true },
