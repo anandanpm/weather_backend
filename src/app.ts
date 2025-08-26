@@ -24,6 +24,6 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use("/weather", weatherRoutes);
+app.use("/api/weather", weatherRoutes);
 
 export default app;
