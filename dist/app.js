@@ -12,9 +12,10 @@ dotenv_1.default.config();
 (0, db_1.default)();
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)({
-    origin: "http://localhost:5173",
+    origin: process.env.FRONTEND_URL,
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"]
 }));
 app.use(express_1.default.json());
 app.use((req, res, next) => {
