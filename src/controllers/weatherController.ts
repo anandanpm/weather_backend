@@ -10,7 +10,6 @@ dotenv.config();
 export const getWeather = async (req: Request, res: Response) => {
   try {
     const { city } = req.query;
-    console.log("City received:", city);
     if (!city) {
       return res.status(400).json({ message: "City is required" });
     }
@@ -32,14 +31,13 @@ export const getWeather = async (req: Request, res: Response) => {
 
     // Fetch new data from WeatherAPI
     const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`;
-    console.log("Fetching URL:", url);
+  
 
     const response = await axios.get(url);
     console.log("API Response:", response.data);
 
     // Handle WeatherAPI error BEFORE saving to DB
     if (response.data.error) {
-      console.log("WeatherAPI returned error:", response.data.error.message);
       return res.status(404).json({ message: response.data.error.message });
     }
 
